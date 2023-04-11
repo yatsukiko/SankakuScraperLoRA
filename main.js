@@ -1,7 +1,7 @@
 const fs = require('fs');
 const prompt = require('prompt-sync')();
 const https = require('https');
-const datasetFolder = 'dataset/'; 
+const datasetsFolder = 'datasets/'; 
 //setup user agent, otherwise we get unauthorized
 const options = {
     headers: {
@@ -36,6 +36,18 @@ fs.writeFile(resFile, prettyJson, err => {
         return;
     }
 console.log(`Successfully pretty-printed and saved ${resFile}`);
+
+function checkCreate(path) {
+  const folders = path.split('/');
+  let currentPath = '';
+  for (let i = 0; i < folders.length; i++) {
+    currentPath += folders[i] + '/';
+    if (!fs.existsSync(currentPath)) {
+      fs.mkdirSync(currentPath);
+    }
+  }
+}
+
 //download image function, uses user agent + check for status code
 const downloadImage = (url, destination) => {
   return new Promise((resolve, reject) => {
@@ -85,22 +97,22 @@ const downloadImage = (url, destination) => {
     const numImages = filteredJson.length;
     //create dataset folder name and figure out steps
     if (1500/numImages < 100){
-        var steps = 100 + `_${datasetName}/`
+        var steps = 100
     } else {
-        var steps = Math.round(1500/numImages) + `_${datasetName}/`
+        var steps = Math.round(1500/numImages)
     }
-    const subDatasetFolder = datasetFolder + steps 
-    if (!fs.existsSync(datasetFolder)) {
-        fs.mkdirSync(datasetFolder);
-      }
-    if (!fs.existsSync(subDatasetFolder)) {
-        fs.mkdirSync(subDatasetFolder);
-      }
+    const subDatasetFolder = `${datasetsFolder}${datasetName}/`
+    const subDatasetImgFolder = subDatasetFolder + "img/"
+    const finalDatasetImgFolder = `${subDatasetImgFolder }${steps}_${datasetName}/`
+    checkCreate(finalDatasetImgFolder)
+    checkCreate(subDatasetFolder + "log/")
+    checkCreate(subDatasetFolder + "model/")
+    
     //download all img_src and rename them, try 5 time if it fails
     for (let i = 0; i < numImages; i++) {
       const image = filteredJson[i];
       const ext = image.img_src.split('.').pop().split('?')[0];
-      const destination = `${subDatasetFolder}${i}.${ext}`;
+      const destination = `${finalDatasetImgFolder}${i}.${ext}`;
       try {
         await retryDownloadImage(image.img_src, destination, 5);
       } catch (error) {
@@ -110,7 +122,7 @@ const downloadImage = (url, destination) => {
       //write a corresponding .txt with img_tags next to it.
       const tags = image.img_tags.split(" ");
       const formattedTags = tags.join(", ");
-      const txtDestination = `${subDatasetFolder}${i}.txt`;
+      const txtDestination = `${finalDatasetImgFolder}${i}.txt`;
       fs.writeFileSync(txtDestination, formattedTags);
     }
     console.log('Done!');
