@@ -38,35 +38,37 @@ fs.writeFile(resFile, prettyJson, err => {
 console.log(`Successfully pretty-printed and saved ${resFile}`);
 //download image function, uses user agent + check for status code
 const downloadImage = (url, destination) => {
-    return new Promise((resolve, reject) => {
-      const file = fs.createWriteStream(destination);
-      https.get(url, options, response => {
-        if (response.statusCode !== 200) {
-          reject(new Error(`Failed to download ${url}. Status code: ${response.statusCode}`));
-        } else {
-          response.pipe(file);
-          file.on('finish', () => {
-            file.close(resolve);
-            console.log("Downloaded " + url)
-          });
-          file.on('error', error => {
-            fs.unlink(destination, () => {
-              reject(error);
-            });
-          });
-        }
-      }).on('error', error => {
-        fs.unlink(destination, () => {
-          reject(error);
+  return new Promise((resolve, reject) => {
+    https.get(url, options, response => {
+      if (response.statusCode !== 200) {
+        reject(new Error(`Failed to download ${url}. Status code: ${response.statusCode}`));
+      } else {
+        const file = fs.createWriteStream(destination);
+        response.pipe(file);
+        file.on('finish', () => {
+          file.close(resolve);
+          console.log("Downloaded " + url);
         });
+        file.on('error', error => {
+          fs.unlink(destination, () => {
+            reject(error);
+          });
+        });
+      }
+    }).on('error', error => {
+      fs.unlink(destination, () => {
+        reject(error);
       });
     });
-  };
+  });
+};
+
   
   //download all img_src entries, and if it fails try again up to x times
   const retryDownloadImage = (url, destination, retriesLeft) => {
     return downloadImage(url, destination).catch(error => {
       if (retriesLeft === 0) {
+
         throw error;
       }
       console.log(`Retrying download of ${url}. Retries left: ${retriesLeft}`);
@@ -82,10 +84,10 @@ const downloadImage = (url, destination) => {
   const main = async () => {
     const numImages = filteredJson.length;
     //create dataset folder name and figure out steps
-    if (numImages/1500 < 100){
+    if (1500/numImages < 100){
         var steps = 100 + `_${datasetName}/`
     } else {
-        var steps = Math.round(numImages/1500) + `_${datasetName}/`
+        var steps = Math.round(1500/numImages) + `_${datasetName}/`
     }
     const subDatasetFolder = datasetFolder + steps 
     if (!fs.existsSync(datasetFolder)) {
@@ -97,7 +99,8 @@ const downloadImage = (url, destination) => {
     //download all img_src and rename them, try 5 time if it fails
     for (let i = 0; i < numImages; i++) {
       const image = filteredJson[i];
-      const destination = `${subDatasetFolder}${i}.jpg`;
+      const ext = image.img_src.split('.').pop().split('?')[0];
+      const destination = `${subDatasetFolder}${i}.${ext}`;
       try {
         await retryDownloadImage(image.img_src, destination, 5);
       } catch (error) {
