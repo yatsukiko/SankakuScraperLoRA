@@ -1,4 +1,4 @@
-1. Install Octoparse from [here](), create account then login in app.
+1. Install Octoparse from [here](https://www.octoparse.com/download/windows), create account then login in app.
 2. load provided template:
 
 ![](https://i.yatsukiko.me/XoCI8/SIHelide31.png/raw)
@@ -21,4 +21,4 @@ you can just open [chan.sanakucomplex.com](https://chan.sankakucomplex.com) sear
 ![](https://i.yatsukiko.me/XoCI8/BIQeHeDu49.png/raw)
 ![](https://i.yatsukiko.me/XoCI8/jAdINaga07.png/raw)
 
-7. Continue with main.js in (main readme.md)[github.com/yatsukiko/SankakuScraperLora/readme.md]
+7. Continue with main.js in [main readme.md](github.com/yatsukiko/SankakuScraperLora/readme.md)
