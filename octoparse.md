@@ -1,4 +1,4 @@
-1. Install Octoparse from [here](), create account then login in app.
+1. Install Octoparse from [here](https://www.octoparse.com/download/windows), create account then login in app.
 2. load provided template:
 
 ![](https://i.yatsukiko.me/XoCI8/SIHelide31.png/raw)
