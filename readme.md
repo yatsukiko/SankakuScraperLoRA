@@ -5,12 +5,12 @@ This is a small Node.js application for scraping images from [https://chan.sanka
 ## Prerequisites
 
 Before running this application, you will need to install Octoparse and load the provided template file. You will also need to change the login and password in Octoparse and update the URL for scraping.
-[more information about octoparse usage here](https://github.com/yatsukiko/SankakuScraperLora/octoparse.md)
+[more information about octoparse usage here](https://github.com/yatsukiko/SankakuScraperLoRA/blob/main/octoparse.md)
 
 ## Getting Started
 
 1. Clone this repository to your local machine.
-2. In Octoparse, start the scraping process and extract data as a `.json` file. If unsure go back to [here](https://github.com/yatsukiko/SankakuScraperLora#Prerequisites)
+2. In Octoparse, start the scraping process and extract data as a `.json` file. If unsure go back to [here](https://github.com/yatsukiko/SankakuScraperLoRA/blob/main/octoparse.md)
 3. Place the `{result}.json` file next to `main.js`.
 4. Run `npm i` to install dependencies.
 5. Run `node main.js`.
