@@ -2,6 +2,8 @@
 
 This is a small Node.js application for scraping images from [https://chan.sankakucomplex.com](https://chan.sankakucomplex.com) using Octoparse and preparing a dataset for the LoRA model.
 
+This tool extracts images and tags from search query then outputs them to `/dataset/{number of steps}_{name of dataset}` as numeric file names and .txt with tags in them.
+
 ## Prerequisites
 
 Before running this application, you will need to install Octoparse and load the provided template file. You will also need to change the login and password in Octoparse and update the URL for scraping.
