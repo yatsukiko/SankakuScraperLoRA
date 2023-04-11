@@ -1,3 +1,4 @@
+# :underage: This page includes links to NSFW website :underage:
 1. Install Octoparse from [here](https://www.octoparse.com/download/windows), create account then login in app.
 2. load provided template:
 
@@ -8,7 +9,7 @@
 ![](https://i.yatsukiko.me/XoCI8/GohUsicI76.png/raw)
 
 4. Change serach query url:
-you can just open [chan.sanakucomplex.com](https://chan.sankakucomplex.com) search something and copy the link.
+you can just open :underage:[chan.sanakucomplex.com](https://chan.sankakucomplex.com):underage: search something and copy the link.
 
 ![](https://i.yatsukiko.me/XoCI8/bAkONUMo20.png/raw)
 
