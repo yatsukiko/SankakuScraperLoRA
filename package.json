@@ -1,0 +1,10 @@
+{
+  "name": "sankakuscraperlora",
+  "version": "1.0.0",
+  "main": "main.js",
+  "author": "yatsukiko",
+  "dependencies": {
+    "prompt-sync": "^4.2.0",
+    "request": "^2.88.2"
+  }
+}
