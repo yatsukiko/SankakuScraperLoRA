@@ -1,6 +1,6 @@
 # SankakuScraperLoRA
 
-This is a small Node.js application for scraping images from [https://chan.sankakucomplex.com](https://chan.sankakucomplex.com) using Octoparse and preparing a dataset for the LoRA model.
+This is a small Node.js application for scraping images from chan.sankakucomplex using Octoparse and preparing a dataset for the LoRA model.
 
 This tool extracts images and tags from search query then outputs them to `/dataset/{number of steps}_{name of dataset}` as numeric file names and .txt with tags in them.
 
@@ -26,9 +26,9 @@ Before running this application, you will need to install Octoparse and load the
 
 - It is best to run `main.js` immediately after scraping all the images, as the URL to these images is based on a token that expires. If you try to run the script after about 30 minutes, it might not work.
 - This script is based on the dataset parameters contained in this video: [https://www.youtube.com/watch?v=70H03cv57-o](https://www.youtube.com/watch?v=70H03cv57-o). If you have no idea what you are doing, please check out this video.
-- The free version of [https://chan.sankakucomplex.com](https://chan.sankakucomplex.com) allows only up to 25 pages, which is technically a maximum of 500 images (since each page contains 20 posts).
+- The free version of chan.sankakucomplex allows only up to 25 pages, which is technically a maximum of 500 images (since each page contains 20 posts).
 - The Octoparse template fails to scrape videos, instead it makes img_src empty but writes the tags, this is somewhat ok behaviour as you can't train via videos anyway (i think?).
-- I cannot guarantee that this script will work with [https://idol.sankakucomplex.com](https://idol.sankakucomplex.com), go try it, I need to sleep.
+- I cannot guarantee that this script will work with idol.sankakucomplex, go try it, I need to sleep.
 - small importance, big chunk of this code (and this readme.md) was written by ChatGPT and then refactored by me, I do have some idea what I'm doing tho. 
 
 ## "Roadmap"
