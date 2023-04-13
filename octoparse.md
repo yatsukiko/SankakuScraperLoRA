@@ -8,7 +8,7 @@
 ![](https://i.yatsukiko.me/XoCI8/GohUsicI76.png/raw)
 
 4. Change serach query url:
-you can just open [chan.sanakucomplex.com](https://chan.sankakucomplex.com) search something and copy the link.
+you can just open chan.sanakucomplex.com then search something and copy the link.
 
 ![](https://i.yatsukiko.me/XoCI8/bAkONUMo20.png/raw)
 
@@ -21,4 +21,4 @@ you can just open [chan.sanakucomplex.com](https://chan.sankakucomplex.com) sear
 ![](https://i.yatsukiko.me/XoCI8/BIQeHeDu49.png/raw)
 ![](https://i.yatsukiko.me/XoCI8/jAdINaga07.png/raw)
 
-7. Continue with main.js in [main readme.md](github.com/yatsukiko/SankakuScraperLora/readme.md)
+7. Continue with main.js in [main readme.md](https://github.com/yatsukiko/SankakuScraperLora)
