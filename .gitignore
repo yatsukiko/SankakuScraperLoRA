@@ -2,3 +2,5 @@ node_modules/
 *.json
 !package.json
 datasets/
+tools/merged/
+tools/rejected
